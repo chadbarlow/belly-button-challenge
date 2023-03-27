@@ -1,44 +1,50 @@
 const url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json";
 
-const getData = (data, id) => {
-    const sample = data.samples.find(s => s.id === id);
-    const index = data.names.indexOf(id);
-    const sampleValues = sample.sample_values.slice(0, 10);
-    const otuIds = sample.otu_ids.slice(0, 10).map(id => `OTU ${id}`);
-    const otuLabels = sample.otu_labels.slice(0, 10).map(label => label.split(";").join("<br> "));
+function init() {
+    let sampleData = { "id": "940", "otu_ids": [1167, 2859, 482, 2264, 41, 1189, 352, 189, 2318, 1977, 3450, 874, 1959, 2191, 1950, 2077, 2275, 944, 2184, 2244, 2024, 2419, 2811, 165, 2782, 2247, 2011, 2396, 830, 2964, 1795, 2722, 307, 2178, 2908, 1193, 2167, 1208, 2039, 1274, 2739, 2737, 1314, 1962, 2186, 2335, 2936, 907, 833, 2483, 2475, 2491, 2291, 159, 2571, 2350, 2342, 2546, 725, 170, 1505, 513, 259, 1169, 258, 1232, 1497, 1498, 1503, 412, 2235, 1960, 1968, 121, 2065, 340, 2110, 2188, 357, 342], "sample_values": [163, 126, 113, 78, 71, 51, 50, 47, 40, 40, 37, 36, 30, 28, 25, 23, 22, 19, 19, 14, 13, 13, 13, 12, 12, 11, 11, 11, 10, 10, 10, 8, 7, 7, 7, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], "otu_labels": ["Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Porphyromonadaceae;Porphyromonas", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Peptoniphilus", "Bacteria", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI", "Bacteria", "Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Porphyromonadaceae;Porphyromonas", "Bacteria", "Bacteria", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Anaerococcus", "Bacteria;Firmicutes;Clostridia;Clostridiales", "Bacteria;Proteobacteria;Epsilonproteobacteria;Campylobacterales;Campylobacteraceae;Campylobacter", "Bacteria;Actinobacteria;Actinobacteria;Actinomycetales;Actinomycetaceae;Varibaculum", "Bacteria;Firmicutes;Clostridia", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI", "Bacteria;Firmicutes;Clostridia", "Bacteria;Firmicutes;Clostridia;Clostridiales", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI", "Bacteria;Actinobacteria;Actinobacteria;Actinomycetales;Corynebacteriaceae;Corynebacterium", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI", "Bacteria;Firmicutes;Clostridia;Clostridiales", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Anaerococcus", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Peptoniphilus", "Bacteria", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Peptoniphilus", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI", "Bacteria;Firmicutes;Clostridia;Clostridiales", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Anaerococcus", "Bacteria;Actinobacteria;Actinobacteria;Actinomycetales", "Bacteria;Firmicutes;Clostridia;Clostridiales;Veillonellaceae", "Bacteria;Firmicutes;Bacilli;Bacillales;Staphylococcaceae;Staphylococcus", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Finegoldia", "Bacteria", "Bacteria;Firmicutes;Clostridia;Clostridiales", "Bacteria;Firmicutes;Clostridia;Clostridiales;Peptococcaceae;Peptococcus", "Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Porphyromonadaceae;Porphyromonas", "Bacteria;Firmicutes;Clostridia;Clostridiales", "Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Porphyromonadaceae;Porphyromonas", "Bacteria;Firmicutes;Clostridia;Clostridiales", "Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Prevotellaceae", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Gallicola", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Gallicola", "Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Prevotellaceae;Prevotella", "Bacteria;Firmicutes;Clostridia", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Anaerococcus", "Bacteria;Firmicutes;Clostridia;Clostridiales;Ruminococcaceae", "Bacteria;Actinobacteria;Actinobacteria;Actinomycetales;Corynebacteriaceae", "Bacteria;Actinobacteria;Actinobacteria;Actinomycetales;Actinomycetaceae", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Anaerococcus", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Anaerococcus", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Anaerococcus", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI", "Bacteria", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Anaerococcus", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Anaerococcus", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Anaerococcus", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Anaerococcus", "Bacteria;Actinobacteria;Actinobacteria;Actinomycetales", "Bacteria", "Bacteria;Firmicutes", "Bacteria", "Bacteria", "Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Porphyromonadaceae;Porphyromonas", "Bacteria", "Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Porphyromonadaceae;Porphyromonas", "Bacteria;Firmicutes", "Bacteria;Firmicutes", "Bacteria;Firmicutes", "Bacteria", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI", "Bacteria;Firmicutes;Clostridia", "Bacteria;Firmicutes;Clostridia", "Bacteria", "Bacteria;Firmicutes;Clostridia;Clostridiales", "Bacteria", "Bacteria;Firmicutes;Clostridia;Clostridiales", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI", "Bacteria", "Bacteria"] };
+    let topSampleValues = [217, 195, 159, 153, 123, 116, 116, 114, 109, 10];
+    let topOtuIds = [1167, 2859, 2011, 41, 296, 909, 2782, 2722, 2964, 1314];
+    let topOtuLabels = ["Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Porphyromonadaceae;Porphyromonas", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Peptoniphilus", "Bacteria;Firmicutes;Clostridia;Clostridiales", "Bacteria", "Bacteria", "Bacteria;Actinobacteria;Actinobacteria;Actinomycetales;Corynebacteriaceae", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Peptoniphilus", "Bacteria;Firmicutes;Clostridia;Clostridiales;IncertaeSedisXI;Finegoldia", "Bacteria;Firmicutes;Clostridia;Clostridiales;Veillonellaceae", "Bacteria;Bacteroidetes;Bacteroidia;Bacteroidales;Prevotellaceae;Prevotella"];
+    let wfreq = 1.0;
+    let demoDict = { "id": 940, "ethnicity": "Caucasian", "gender": "F", "age": 24.0, "location": "Beaufort/NC", "bbtype": "I", "wfreq": 2.0 };
+    updateDemographics(demoDict);
+    createBarChart({ topSampleValues, topOtuIds, topOtuLabels });
+    createBubbleChart(sampleData);
+    createGaugeChart(wfreq);
+}
 
+const getSelectionData = (allData, selectionName) => {
+    const sampleData = allData.samples.find(s => s.id === selectionName);
+    const topSampleValues = sampleData.sample_values.slice(0, 10);
+    const topOtuIds = sampleData.otu_ids.slice(0, 10).map(selectionName => `OTU ${selectionName}`);
+    const topOtuLabels = sampleData.otu_labels.slice(0, 10).map(label => label.split(";").join("<br> "));
+    const nameIndex = allData.names.indexOf(selectionName);
+    const wfreq = allData.metadata[nameIndex].wfreq;
+    const demoDict = allData.metadata[nameIndex];
     return {
-        index,
-        sampleValues,
-        otuIds,
-        otuLabels,
-        wfreq: data.metadata[index].wfreq
+        sampleData,
+        topSampleValues,
+        topOtuIds,
+        topOtuLabels,
+        nameIndex,
+        wfreq,
+        demoDict
     };
 };
 
-const createDropdown = (data) => {
-    const selectList = document.getElementById("selDataset");
-    data.names.forEach(name => {
-        const option = document.createElement("option");
-        option.value = name;
-        option.text = name;
-        selectList.appendChild(option);
-    });
-};
-
-const updateDemographics = (metadata) => {
-    const demographics = Object.entries(metadata);
-    const htmlString = demographics.map(([key, value]) => `<p>${key}: ${value}</p>`).join("");
+const updateDemographics = (demoDict) => {
+    const demoList = Object.entries(demoDict);
+    const htmlString = demoList.map(([key, value]) => `<p>${key}: ${value}</p>`).join("");
     document.getElementById("sample-metadata").innerHTML = htmlString;
 };
 
-const createBarChart = ({ sampleValues, otuIds, otuLabels }) => {
+const createBarChart = ({ topSampleValues, topOtuIds, topOtuLabels }) => {
     const data = [{
         type: 'bar',
-        x: sampleValues,
-        y: otuIds,
+        x: topSampleValues,
+        y: topOtuIds,
         orientation: 'h',
-        text: otuLabels,
+        text: topOtuLabels,
         hovertemplate: '<b>Bacteria Type(s):</b><br><i>%{text}</i><extra></extra>',
         hovermode: "closest",
         hoverlabel: { bgcolor: "#FFF" }
@@ -50,23 +56,23 @@ const createBarChart = ({ sampleValues, otuIds, otuLabels }) => {
     Plotly.newPlot('bar', data, layout);
 };
 
-const createBubbleChart = (sample) => {
+const createBubbleChart = (sampleData) => {
     const data = [{
-        x: sample.otu_ids,
-        y: sample.sample_values,
+        x: sampleData.otu_ids,
+        y: sampleData.sample_values,
         mode: 'markers',
         marker: {
-            size: sample.sample_values,
-            color: sample.otu_ids,
+            size: sampleData.sample_values,
+            color: sampleData.otu_ids,
             colorscale: 'Earth'
         },
-        text: sample.otu_labels.map(label => label.split(";").join("<br> ")),
+        text: sampleData.otu_labels.map(label => label.split(";").join("<br> ")),
         hovertemplate: '<b>Bacteria Type(s):</b><br><i>%{text}</i><extra></extra>',
         hovermode: "closest"
     }];
     const layout = {
         xaxis: { title: 'OTU ID' },
-        margin: { t: 40 },
+        margin: { t: 40, l: 0, r: 0, b: 0 }
     };
     Plotly.newPlot('bubble', data, layout);
 };
@@ -85,26 +91,70 @@ const createGaugeChart = (wfreq) => {
     Plotly.newPlot('gauge', data, layout);
 };
 
-const updateCharts = (data, id) => {
-    const { index, sampleValues, otuIds, otuLabels, wfreq } = getData(data, id);
-    updateDemographics(data.metadata[index]);
-    createBarChart({ sampleValues, otuIds, otuLabels });
-    createBubbleChart(data.samples[index]);
+const createDropdown = (allData) => {
+    const selectList = document.getElementById("selDataset");
+    allData.names.forEach(name => {
+        const option = document.createElement("option");
+        option.value = name;
+        option.text = name;
+        selectList.appendChild(option);
+    });
+};
+
+const updateCharts = (allData, selectionName) => {
+    const { sampleData, topSampleValues, topOtuIds, topOtuLabels, wfreq, demoDict } = getSelectionData(allData, selectionName);
+    updateDemographics(demoDict);
+    createBarChart({ topSampleValues, topOtuIds, topOtuLabels });
+    createBubbleChart(sampleData);
     createGaugeChart(wfreq);
 };
 
-d3.json(url).then(data => {
-    createDropdown(data);
+d3.json(url).then(allData => {
+    createDropdown(allData);
     d3.selectAll("#selDataset").on("change", () => {
-        const id = d3.event.target.value;
-        updateCharts(data, id);
+        const selectionName = d3.event.target.value;
+        updateCharts(allData, selectionName);
     });
-}).catch(error => console.log(error));
+}).catch(error => handleError(error));
+
+init()
+
+
+
+
+
+
 
 
 
 // ----------------- OLD CODE ----------------- //
 
+// function simulateError() {
+//     throw new Error('<b>Oops! Something went wrong. </b>Please refresh the page and try again.');
+// }
+
+// function handleError(error) {
+//     const errorMessage = document.createElement('div');
+//     errorMessage.innerHTML = error.message;
+//     errorMessage.setAttribute('id', 'error-banner');
+//     document.body.appendChild(errorMessage);
+//     errorMessage.style.display = 'block';
+
+//     const errorSpacer = document.createElement('div');
+//     errorSpacer.setAttribute('id', 'error-banner-spacer');
+//     errorSpacer.style.height = getComputedStyle(errorMessage).height;
+//     document.body.appendChild(errorSpacer);
+// }
+
+// function simulateError() {
+//     throw new Error('Oops! Something went wrong.');
+// }
+
+// try {
+//     simulateError();
+// } catch (error) {
+//     handleError(error);
+// }
 
 // // Define the URL of the dataset and retrieve the JSON data
 // const url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json";
@@ -113,7 +163,7 @@ d3.json(url).then(data => {
 // // Main function to process the dataset and create visualizations
 // d3.json(url).then(function (data) {
 
-//     // Populate the dropdown menu with sample IDs
+//     // Populate the dropdown menu with sampleData IDs
 //     let array = Object.values(data.names);
 //     let selectList = document.getElementById("selDataset");
 //     for (i = 0; i < array.length; i++) {
@@ -128,23 +178,23 @@ d3.json(url).then(data => {
 
 //     // Function to be called when dropdown menu selection changes
 //     function getData() {
-//         // Retrieve the selected sample and its index
+//         // Retrieve the selected sampleData and its index
 //         let dropdownMenu = d3.select("#selDataset");
 //         let id = dropdownMenu.property("value");
-//         let sample = data.samples.find(s => s.id === id);
+//         let sampleData = data.samples.find(s => s.id === id);
 //         let index = data.names.indexOf(id);
 
 //         // Prepare data for visualizations
-//         if (sample) {
-//             sampleValues = sample.sample_values.slice(0, 10);
-//             otuIds = sample.otu_ids.map(String).slice(0, 10).map(item => 'OTU ' + item);
-//             otuLabels = sample.otu_labels.slice(0, 10);
+//         if (sampleData) {
+//             sampleValues = sampleData.sample_values.slice(0, 10);
+//             topOtuIds = sampleData.otu_ids.map(String).slice(0, 10).map(item => 'OTU ' + item);
+//             topOtuLabels = sampleData.otu_labels.slice(0, 10);
 //         }
 
 //         // Create visualizations
 //         createGauge(index);
 //         createDemographics(index);
-//         createBar(sampleValues, otuIds, otuLabels);
+//         createBar(sampleValues, topOtuIds, topOtuLabels);
 //         createBub();
 //     }
 
@@ -158,20 +208,20 @@ d3.json(url).then(data => {
 //             htmlString += "<p>" + demographics[i][0] + ": " + demographics[i][1];
 //         }
 
-//         document.getElementById("sample-metadata").innerHTML = htmlString;
+//         document.getElementById("sampleData-metadata").innerHTML = htmlString;
 //     }
 
 //     // Function to create bar chart
-//     function createBar(sampleValues, otuIds, otuLabels) {
+//     function createBar(sampleValues, topOtuIds, topOtuLabels) {
 //         // Format labels for hover text
-//         let newLabels = otuLabels.map(item => {
+//         let newLabels = topOtuLabels.map(item => {
 //             let splitItem = item.split(";");
 //             return splitItem.join("<br> ");
 //         });
 //         let barChart = [{
 //             type: 'bar',
 //             x: sampleValues,
-//             y: otuIds,
+//             y: topOtuIds,
 //             hovermode: "closest",
 //             hoverlabel: { bgcolor: "#FFF" },
 //             text: newLabels,

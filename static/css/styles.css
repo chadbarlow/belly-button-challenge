@@ -1,0 +1,16 @@
+#error-banner {
+    background-color: #B73333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    letter-spacing: 0.01em;
+}
+
+#error-banner-spacer {
+    height: 80px !important;
+    visibility: hidden;
+}
