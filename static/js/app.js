@@ -99,10 +99,10 @@ const createBubbleChart = (sampleDataDict) => {
         hovermode: "closest"
     }];
     const layout = {
-        title: '<b>Bacteria Cultures Found</b><br>Top 10',
+        title: '<b>Visualizing Relative Culture Sizes</b><br>Top 10 Cultures',
         titlefont: {
             size: 20,
-            color: '#333333',
+            color: '#333',
             family: 'Oswald, sans-serif'
         },
         xaxis: {
@@ -128,7 +128,7 @@ const createBubbleChart = (sampleDataDict) => {
             },
             tickfont: {
                 size: 12,
-                color: '#333333',
+                color: '#FFF',
 
             },
             zerolinecolor: '#FFF',
