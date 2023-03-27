@@ -16,7 +16,7 @@ function init() {
 const getSelectionData = (allData, selectionName) => {
     const sampleDataDict = allData.samples.find(s => s.id === selectionName);
     const topSampleValues = sampleDataDict.sample_values.slice(0, 10);
-    const topOtuIds = sampleDataDict.otu_ids.slice(0, 10).map(selectionName => `OTU ${selectionName}`);
+    const topOtuIds = sampleDataDict.otu_ids.slice(0, 10).map(selectionName => `OTU ${selectionName} `);
     const topOtuLabels = sampleDataDict.otu_labels.slice(0, 10).map(label => label.split(";").join("<br> "));
     const nameIndex = allData.names.indexOf(selectionName);
     const wfreq = allData.metadata[nameIndex].wfreq;
@@ -45,12 +45,39 @@ const createBarChart = ({ topSampleValues, topOtuIds, topOtuLabels }) => {
         orientation: 'h',
         text: topOtuLabels,
         hovertemplate: '<b>Bacteria Type(s):</b><br><i>%{text}</i><extra></extra>',
-        hovermode: "closest",
-        hoverlabel: { bgcolor: "#FFF" }
+        hoverlabel: { bgcolor: "#FFF" },
+        marker: {
+            color: '#4AAAA5'
+        }
     }];
     const layout = {
-        height: 425,
-        margin: { t: 0, l: 125, r: 0, b: 0 }
+        title: '<b>Bacteria Cultures Found</b><br>Top 10',
+        font: {
+            family: 'Oswald, sans-serif'
+        },
+        xaxis: {
+            title: '',
+            titlefont: {
+                size: 12,
+                color: '#333333'
+            },
+            tickfont: {
+                size: 12,
+                color: '#333333'
+            },
+            zerolinecolor: '#4AAAA5',
+        },
+        yaxis: {
+            title: '',
+            titlefont: {
+                size: 12,
+                color: '#333333'
+            },
+            tickfont: {
+                size: 12,
+                color: '#333333'
+            },
+        },
     };
     Plotly.newPlot('bar', data, layout);
 };
@@ -70,8 +97,42 @@ const createBubbleChart = (sampleDataDict) => {
         hovermode: "closest"
     }];
     const layout = {
-        xaxis: { title: 'OTU ID' },
-        margin: { t: 40, l: 0, r: 0, b: 0 }
+        title: '<b>Bacteria Cultures Found</b><br>Top 10',
+        font: {
+            family: 'Oswald, sans-serif'
+        },
+
+        xaxis: {
+            title: '',
+            titlefont: {
+                size: 12,
+                color: '#333333'
+            },
+            tickfont: {
+                size: 12,
+                color: '#333333'
+            },
+            zerolinecolor: '#FFF',
+            zerolinewidth: 0,
+
+
+        },
+        yaxis: {
+            title: '',
+            titlefont: {
+                size: 12,
+                color: '#333333'
+            },
+            tickfont: {
+                size: 12,
+                color: '#333333',
+
+            },
+            zerolinecolor: '#FFF',
+            zerolinewidth: 0,
+
+
+        },
     };
     Plotly.newPlot('bubble', data, layout);
 };
@@ -81,12 +142,19 @@ const createGaugeChart = (wfreq) => {
         value: wfreq,
         title: { text: "<b>Belly Button Washing Frequency</b><br>Scrubs Per Week<br> " },
         type: "indicator",
-        mode: "gauge+number"
+        mode: "gauge+number",
+        gauge: {
+            axis: { range: [null, 9], tickcolor: "#4AAAA5" },
+            bar: { color: "#4AAAA5" },
+            borderwidth: 1,
+            bordercolor: "#4AAAA5"
+        }
     }];
     const layout = {
-        width: 500,
-        margin: { t: 75, l: 50, r: 125, b: 0 }
+        // width: 500,
+        font: { color: "#333333", family: 'Oswald, sans-serif' }
     };
+
     Plotly.newPlot('gauge', data, layout);
 };
 
