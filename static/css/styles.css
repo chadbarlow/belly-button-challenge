@@ -10,14 +10,14 @@ h1 {
     font-weight: 500;
     font-size: 4em;
     color: #333333;
-    margin: 10px 0 0 0;
+    margin: 15px 0 0 0;
 }
 
 h2 {
     font-weight: 400;
     font-size: 4em;
     color: #4AAAA5;
-    margin: 0 0 25px 0;
+    margin: 0 0 35px 0;
 }
 
 h5 {
@@ -110,11 +110,10 @@ div.user-select-none.sg-container { */
 /* width: 100% !important; */
 /* } */
 
-/* .col-md-12 {
-    width: auto;
-    margin: 0;
-    padding: 0;
-} */
+#bubble {
+    margin: 20px 0 0 0;
+    /* padding: 80px; */
+}
 
 /* .svg-container {
     margin: 0 0 0 0 !important;
