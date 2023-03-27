@@ -9,14 +9,14 @@ h1 {
     font-weight: 500;
     font-size: 4em;
     color: #333333;
-    margin: 0;
+    margin: 10px 0 0 0;
 }
 
 h2 {
     font-weight: 400;
     font-size: 4em;
     color: #4AAAA5;
-    margin: 0;
+    margin: 0 0 25px 0;
 }
 
 h5 {
@@ -71,11 +71,14 @@ div#dropdown.drop {
     margin: 0.25em 0 0.5em 0;
 }
 
+select#selDataset.dropdown-item {
+    outline: none;
+}
+
 .dropdown-item {
     font-family: 'Oswald', sans-serif;
 
 }
-
 
 div.panel-heading {
     background-color: #E5F7F7 !important;

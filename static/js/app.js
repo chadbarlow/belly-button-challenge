@@ -52,7 +52,9 @@ const createBarChart = ({ topSampleValues, topOtuIds, topOtuLabels }) => {
     }];
     const layout = {
         title: '<b>Bacteria Cultures Found</b><br>Top 10',
-        font: {
+        titlefont: {
+            size: 20,
+            color: '#333333',
             family: 'Oswald, sans-serif'
         },
         xaxis: {
@@ -98,10 +100,11 @@ const createBubbleChart = (sampleDataDict) => {
     }];
     const layout = {
         title: '<b>Bacteria Cultures Found</b><br>Top 10',
-        font: {
+        titlefont: {
+            size: 20,
+            color: '#333333',
             family: 'Oswald, sans-serif'
         },
-
         xaxis: {
             title: '',
             titlefont: {
@@ -151,8 +154,11 @@ const createGaugeChart = (wfreq) => {
         }
     }];
     const layout = {
-        // width: 500,
-        font: { color: "#333333", family: 'Oswald, sans-serif' }
+        font: {
+            size: 20,
+            color: '#333333',
+            family: 'Oswald, sans-serif'
+        },
     };
 
     Plotly.newPlot('gauge', data, layout);
