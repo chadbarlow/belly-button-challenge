@@ -98,10 +98,10 @@ div.panel-heading {
     padding: 0 0 0 0;
 }
 
-#bar {
-    margin: 0 0 0 50px;
-    padding: 10px 0 0;
-}
+/* #bar {
+    margin: 0 0 0 50px !important;
+    padding: 10px 0 0 !important;
+} */
 
 /* div.plot-container.plotly,
 div.user-select-none.sg-container { */
