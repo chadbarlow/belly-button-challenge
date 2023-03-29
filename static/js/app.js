@@ -113,7 +113,7 @@ const createBubbleChart = (sampleDataDict) => {
             },
             tickfont: {
                 size: 12,
-                color: '#FFF',
+                color: '#333333',
 
             },
             zerolinecolor: '#FFF',
