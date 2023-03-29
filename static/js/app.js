@@ -104,8 +104,6 @@ const createBubbleChart = (sampleDataDict) => {
             },
             zerolinecolor: '#FFF',
             zerolinewidth: 0,
-
-
         },
         yaxis: {
             title: '',
@@ -120,8 +118,6 @@ const createBubbleChart = (sampleDataDict) => {
             },
             zerolinecolor: '#FFF',
             zerolinewidth: 0,
-
-
         },
     };
     Plotly.newPlot('bubble', data, layout);
