@@ -172,7 +172,9 @@ d3.json(url).then(allData => {
         const selectionName = d3.event.target.value;
         updateCharts(allData, selectionName);
     });
-}).catch(error => handleError(error));
+}).catch(function (error) {
+    console.log(error);
+});
 
 
 
