@@ -1,4 +1,4 @@
-<h1 align="center"> INTERACTIVE WEB DASHBOARD<br><i>Topic: Belly Button Biodiversity</i> </h1> 
+<h1 align="left"> INTERACTIVE WEB DASHBOARD<br><i>Topic: Belly Button Biodiversity</i> </h1> 
 
 The purpose of this project is to create an interactive dashboard that allows users to explore and visualize the Belly Button Biodiversity dataset, which catalogs the microbial species (operational taxonomic units or OTUs) found in human navels. The main goals of the project are to highlight the differences in OTUs among individuals and their prevalence, and to make the dataset more accessible for further analysis and potential civic impact.
 
