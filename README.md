@@ -2,10 +2,10 @@
 
 The purpose of this project is to create an interactive dashboard that allows users to explore and visualize the Belly Button Biodiversity dataset, which catalogs the microbial species (operational taxonomic units or OTUs) found in human navels. The main goals of the project are to highlight the differences in OTUs among individuals and their prevalence, and to make the dataset more accessible for further analysis and potential civic impact.
 
-The dashboard is live at: https://web-design-challenge.github.io/live/
+The dashboard is live at: https://belly-button-challenge.github.io/live/
 
-<a href="https://web-design-challenge.github.io/live/">
-  <img src="https://user-images.githubusercontent.com/8321756/233792641-429f8ed1-d716-4db1-9775-e9a10925c74e.png" alt="Interactive web dashboard">
+<a href="https://belly-button-challenge.github.io/live/">
+  <img src="https://user-images.githubusercontent.com/8321756/233792762-95e5c9b7-ef78-40b7-bbd8-9910187fb343.png" alt="Interactive web dashboard">
 </a>
 
 ## Tools
