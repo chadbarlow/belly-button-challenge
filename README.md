@@ -17,5 +17,5 @@ The purpose of this project is to create an interactive dashboard that allows us
 - **Bubble Chart**: Visualizes each sample with `otu_ids` as the x-values, `sample_values` as the y-values and marker size, `otu_ids` as the marker colors, and `otu_labels` as the text values.
 - **Sample Metadata**: Shows the demographic information of the selected individual, displaying each key-value pair from the metadata JSON object on the page.
 
-## Limitations
+## Further Development
 The data is limited to the samples provided in the `samples.json` file. Further exploration would require additional data to be added to the dataset.
