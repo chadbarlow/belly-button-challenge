@@ -1,9 +1,21 @@
-# TL;DR
-Build dynamic data visualizations with D3.js and Plotly.js. Online at: [https://belly-button-challenge.github.io/live/](https://belly-button-challenge.github.io/live/)
+<h1 align="left"> INTERACTIVE WEB DASHBOARD<br><i>Topic: Belly Button Biodiversity</i> </h1> 
 
-## Detailed Summary
-In this project, we developed a data visualization dashboard to analyze the Belly Button Biodiversity dataset, which contains information on the microbial species found in human navels. Utilizing the D3.js library, we ingested JSON data from a given URL and implemented a dropdown menu for user interaction. By leveraging Plotly.js, we constructed various visualizations, including a horizontal bar chart displaying the top 10 OTUs per sample, a bubble chart representing the entire dataset, and a gauge chart.
+The purpose of this project is to create an interactive dashboard that allows users to explore and visualize the Belly Button Biodiversity dataset, which catalogs the microbial species (operational taxonomic units or OTUs) found in human navels. The main goals of the project are to highlight the differences in OTUs among individuals and their prevalence, and to make the dataset more accessible for further analysis and potential civic impact.
 
-Our analysis indicated that a limited number of microbial species, referred to as operational taxonomic units (OTUs), were present in more than 70% of the population, with other species being relatively rare. We further augmented the dashboard by presenting individual demographic metadata, extracted as key-value pairs from the metadata JSON object, in a dedicated "Demographic Info" panel. The user interface was designed to trigger real-time updates of all visualizations upon selecting a new sample, ensuring responsiveness and interactivity.
+### Methods Used
+* Data Visualization
+* Data Processing
+* Web Development
 
-The final application, demonstrating a synthesis of advanced data visualization techniques and effective data processing, was deployed to GitHub Pages at https://belly-button-challenge.github.io/live/, making it available to a broad audience.
+### Technologies
+* D3.js
+* Plotly.js
+* HTML / Bootstrap / CSS
+
+## Features
+- **Horizontal Bar Chart**: Displays the top 10 OTUs found in the selected individual, with `sample_values` as the chart values, `otu_ids` as the labels, and `otu_labels` as the hovertext.
+- **Bubble Chart**: Visualizes each sample with `otu_ids` as the x-values, `sample_values` as the y-values and marker size, `otu_ids` as the marker colors, and `otu_labels` as the text values.
+- **Sample Metadata**: Shows the demographic information of the selected individual, displaying each key-value pair from the metadata JSON object on the page.
+
+## Limitations
+The data is limited to the samples provided in the `samples.json` file. Further exploration would require additional data to be added to the dataset.
