@@ -5,7 +5,7 @@ The purpose of this project is to create an interactive dashboard that allows us
 The dashboard is live at: https://belly-button-challenge.github.io/live/
 
 <a href="https://belly-button-challenge.github.io/live/">
-  <img src="https://user-images.githubusercontent.com/8321756/233792762-95e5c9b7-ef78-40b7-bbd8-9910187fb343.png" alt="Interactive web dashboard">
+  <img align="center" src="https://user-images.githubusercontent.com/8321756/233792762-95e5c9b7-ef78-40b7-bbd8-9910187fb343.png" alt="Interactive web dashboard">
 </a>
 
 ## Tools
